@@ -1,0 +1,26 @@
+---
+title: "Lab X Assignment: Group 14"
+format: revealjs
+editor: visual
+author:
+  - name: Mireia Rivas Bermúdez - s263509
+  - name: Lukas Beržinis - s263503
+  - name: Amanda Espinas Novau - s263508
+  - name: Marta Taboada Ramírez - s263518
+  - name: Carla Ruedas - s251157
+---
+
+## Header
+
+Content
+
+## Bullets
+
+- Point 1
+- Point 2
+
+## Code
+
+```{r}
+1 + 1
+```

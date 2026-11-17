@@ -1,0 +1,44 @@
+---
+title: "Lab X Assignment: Group 14"
+format:
+  html:
+    embed-resources: true
+editor: visual
+author:
+  - name: Mireia Rivas Bermúdez - s263509
+  - name: Lukas Beržinis - s263503
+  - name: Amanda Espinas Novau - s263508
+  - name: Marta Taboada Ramírez - s263518
+  - name: Carla Ruedas - s251157
+---
+
+## Setup
+
+Loading `tidyverse` package and functions used in the project.
+
+```{r}
+#| label: setup
+
+# Loading packages
+library("tidyverse")
+
+# Loading functions
+source("99_func.R")
+```
+
+## Data creation and preparation
+
+```{r}
+set.seed(676571)
+# Generate/download data
+```
+
+```{r}
+# Reformat data
+```
+
+## Data visualization
+
+```{r}
+# Visualize data
+```
