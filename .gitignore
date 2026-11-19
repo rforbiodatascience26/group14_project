@@ -1,3 +1,6 @@
 .Rhistory
 data/*
 !data/_raw/
+data/_raw/*
+!data/_raw/.gitkeep
+.Rproj.user
