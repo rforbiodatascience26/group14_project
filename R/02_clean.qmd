@@ -1,0 +1,77 @@
+# Clean Data
+
+## Load Libraries
+
+```{r}
+library("tidyverse")
+```
+
+## Load Data
+```{r}
+proteomics_loaded <- read_tsv(
+  "../data/01_dat_load.tsv"
+)
+```
+```{r}
+glimpse(proteomics_loaded)
+```
+
+```{r}
+proteomics_clean <- proteomics_loaded |>
+  mutate(
+    vial_label = as.character(vial_label)
+  ) |>
+  filter(
+    !is_contaminant
+  )
+```
+```{r}
+glimpse(proteomics_clean)
+```
+
+```{r}
+phenotype_data <- read_tsv(
+  "../data/_raw/motrpac_pass1b-06_pheno_viallabel_data_merged_v4.0.txt"
+)
+
+phenotype_selected <- phenotype_data |>
+  select(
+    viallabel,
+    registration___sex,
+    study_group_timepoint
+  ) |>
+  mutate(
+    viallabel = as.character(viallabel)
+  )
+```
+
+```{r}
+glimpse(phenotype_selected)
+```
+
+```{r}
+proteomics_clean <- proteomics_clean |>
+  left_join(
+    phenotype_selected,
+    by = c("vial_label" = "viallabel")
+  )
+```
+
+```{r}
+proteomics_clean |>
+  filter(
+    is.na(study_group_timepoint)
+  ) |>
+  distinct(
+    vial_label
+  )
+```
+
+## Save clean data
+
+```{r}
+write_tsv(
+  proteomics_clean,
+  "../data/02_dat_clean.tsv"
+)
+```
