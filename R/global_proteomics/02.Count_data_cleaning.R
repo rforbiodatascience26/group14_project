@@ -11,12 +11,6 @@ cortex_expr_df <- cortex_expr_df |>
   inner_join(Cortex_metadata,by = "vial_label")
 
 colnames(cortex_expr_df)[6] <- "batch"
-
-cortex_expr_df <- mutate(cortex_expr_df,
-  condition = factor(condition, levels = c("Control", "Training")),
-  sex = factor(sex, levels = c("M", "F")),
-  batch = factor(batch, levels = c("S1","S2","S3","S4","S5","S6"))
-)
   
 # GASTROCNEMIUS DATA
 
