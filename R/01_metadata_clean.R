@@ -50,7 +50,15 @@ clean_metadata_table <- meta_vial_label |>
     
     sex = case_when(
     registration___sex == 1 ~ "F", 
-    registration___sex == 2 ~ "M")) |> 
+    registration___sex == 2 ~ "M"),
+    
+    vial_label = as.character(viallabel)) |> 
   
-  select(viallabel,condition, sex)
+  select(vial_label,condition, sex)
   
+
+table(clean_metadata_table$condition)
+
+table(clean_metadata_table$sex)
+
+filter(clean_metadata_table, vial_label == "90571015305")
