@@ -164,3 +164,13 @@ write_tsv(
   "../data/01_dat_load.tsv"
 )
 ```
+
+
+Metadata file Loading
+
+```{r}
+meta_pheno_dic <- read_tsv("data/_raw/motrpac_pass1b-06_pheno_dictionary_merged_v4.0.txt")
+
+meta_vial_label <- read_tsv("data/_raw/motrpac_pass1b-06_pheno_viallabel_data_merged_v4.0.txt")
+```
+
