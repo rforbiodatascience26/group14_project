@@ -39,3 +39,53 @@ pcdf_cleaner <- function(processed_expression_df) {
 }
 
 
+# Function 2: Differential protein expression analyzer:
+
+diff_prot_expr_calc <- function(clean_expr_df) {
+  
+  diff_prot_expr_df <- clean_expr_df |> 
+    group_by(entrez_id) |> 
+    nest(.key = "data") |> 
+    ungroup() |> 
+    mutate(
+      model_object = map(
+        .x = data,
+        .f = possibly(
+          ~ lm(formula = expression ~ condition + sex + batch, data = .x),
+          otherwise = NULL
+        )
+      ),
+      coef_condition = map_dbl(
+        .x = model_object,
+        .f = ~ {
+          if (is.null(.x)) return(NA_real_)
+          cf <- coef(.x)
+          idx <- grep("^condition", names(cf))
+          if (length(idx) == 0) return(NA_real_)
+          unname(cf[idx[1]])
+        }
+      ),
+      p_value = map_dbl(
+        .x = model_object,
+        .f = ~ {
+          if (is.null(.x)) return(NA_real_)
+          mat <- summary(.x)$coefficients
+          idx <- grep("^condition", rownames(mat))
+          if (length(idx) == 0) return(NA_real_)
+          unname(mat[idx[1], "Pr(>|t|)"])
+        }
+      ),
+      padj = p.adjust(p_value, method = "BH")
+    ) |> 
+    select(entrez_id, coef_condition, p_value, padj)
+  
+  return(diff_prot_expr_df)
+}
+
+
+
+
+
+
+
+
