@@ -1,0 +1,7 @@
+---
+title: "About_the_project"
+format: html
+---
+
+(tochange)
+Lo que te has descargado es un dataset de proteómica cuantitativa global (no dirigida / untargeted) por espectrometría de masas (LC-MS/MS) con marcaje isobárico TMT (Tandem Mass Tags), generado dentro del consorcio MoTrPAC (estudio de entrenamiento de resistencia en ratas jóvenes de 6 meses, release c2.0, sobre el genoma/proteoma de rata Rn7)
