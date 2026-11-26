@@ -30,7 +30,7 @@ pcdf_cleaner <- function(processed_expression_df) {
       values_drop_na = TRUE) |> 
     
     # Step 4: Add information of the sample
-    inner_join(clean_metadata_table, by = "vial_label") |> 
+    inner_join(clean_metadata_table, by = "vial_label") 
     # Has to be an inner join, because the processed expression has samples taken 
     # at other moments beside 8 weeks, and the metadata has all the possible samples
     # we are interested in, (control or endurance exercise at 8 weeks).
