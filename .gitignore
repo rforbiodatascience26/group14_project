@@ -4,3 +4,4 @@ data/*
 data/_raw/*
 !data/_raw/.gitkeep
 .Rproj.user
+.positai
